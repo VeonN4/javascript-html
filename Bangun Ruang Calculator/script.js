@@ -32,10 +32,12 @@ let currentFormula = null;
 function openModal(index) {
   currentFormula = formulas[index];
   const modal = document.getElementById("calculation-modal");
-  const modalContent = document.getElementById("modal-content");
   document.getElementById('modal-title').textContent = currentFormula.title;
 
   const calculateBtn = document.createElement("div");
+  
+  const calculateDiv = document.getElementById("calculate-div")
+  calculateDiv.innerHTML = ''
   
   const inputsContainer = document.getElementById("modal-input");
   inputsContainer.innerHTML = ''
@@ -50,8 +52,9 @@ function openModal(index) {
     inputsContainer.append(div)
   });
   
+  
   calculateBtn.innerHTML = `<button id="calculate" onclick="calculate(${index})">Calculate</button>`
-  modalContent.append(calculateBtn)
+  calculateDiv.append(calculateBtn)
 
   modal.style.display = 'block';
 };
@@ -66,9 +69,9 @@ window.onclick = (event) => {
 function calculate(index) {
   currentFormula = formulas[index];
   const inputs = [];
-  const result = []; 
   
-  const modalContent = document.getElementById("modal-content")
+  const answerContent = document.getElementById("answer-div")
+  answerContent.innerHTML = ''
 
   for (let i = 0; i < currentFormula.inputs.length; i++) {
     const value = parseFloat(document.getElementById(`input-${i}`).value);
@@ -82,18 +85,11 @@ function calculate(index) {
   currentFormula.formulas_list.forEach((formula) => {
     const div = document.createElement("div");
     div.id = "answer"
-    console.log(document.getElementById("answer").)
 
-    if (formula.label in result === false) {      
-      div.innerHTML = `
-        ${formula.label}: ${formula.formula(inputs).toFixed(2)} ${currentFormula.inputs[0].unit}
-      `
-
-      result.push(formula.label)
-      modalContent.append(div)
-    } else {
-      div.textContent = `${formula.label}: ${formula.formula(inputs).toFixed(2)} ${currentFormula.inputs[0].unit}`
-    }
+    div.innerHTML = `
+      ${formula.label}: ${formula.formula(inputs).toFixed(2)} ${currentFormula.inputs[0].unit}
+    `
+    answerContent.append(div)
   });
   // const result = currentFormula.formula(inputs);
   // document.getElementById('answer').textContent = `Result: ${result.toFixed(2)} ${currentFormula.inputs[0].unit}`
