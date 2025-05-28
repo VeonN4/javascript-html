@@ -1,15 +1,84 @@
 const formulas = [
   {
-    title: "Test",
-    description: "Lorem ipsum",
+    title: "Kubus",
+    description: "Calculator untuk menghitung bangun geometri kubus",
     inputs: [
-      { label: "Input 1", unit: "m" }
+      { label: "Sisi", unit: "cm2" }
     ],
     formulas_list: [
-      { label: "Test", formula: (inputs) => inputs[0] * inputs[0]}
+      { label: "Volume (V)", formula: (inputs) => inputs[0] * inputs[0] * inputs[0] },
+      { label: "Luas Permukaan", formula: (inputs) => 6 * inputs[0] * inputs[0] }
     ],
     
-  }
+  },
+  {
+    title: "Balok",
+    description: "Calculator untuk menghitung bangun geometri Balok",
+    inputs: [
+      { label: "Panjang", unit: "cm2" },
+      { label: "Lebar", unit: "cm2" },
+      { label: "Tinggi", unit: "cm2" }
+    ],
+    formulas_list: [
+      { label: "Volume (V)", formula: (inputs) => inputs[0] * inputs[1] * inputs[2] },
+      { label: "Luas Permukaan", formula: (inputs) => 2 * (inputs[0] * inputs[1] +  inputs[0] * inputs[2] + inputs[1] * inputs[2]) }
+    ],
+    
+  },
+  {
+    title: "Prisma",
+    description: "Calculator untuk menghitung bangun geometri Prisma",
+    inputs: [
+      { label: "Luas Alas", unit: "cm2" },
+      { label: "Tinggi", unit: "cm2" }
+    ],
+    formulas_list: [
+      { label: "Volume", formula: (inputs) => inputs[0] * inputs[1] },
+    ],
+  },
+  {
+    title: "Limas",
+    description: "Calculator untuk menghitung bangun geometri Limas",
+    inputs: [
+      { label: "Luas Alas", unit: "cm2" },
+      { label: "Tinggi", unit: "cm2" }
+    ],
+    formulas_list: [
+      { label: "Volume (V)", formula: (inputs) => 1/3 * inputs[0] * inputs[1] },
+    ],
+  },
+  {
+    title: "Tabung",
+    description: "Calculator untuk menghitung bangun geometri Tabung", 
+    inputs: [
+      { label: "Luas Alas", unit: "cm2" },
+      { label: "Tinggi", unit: "cm2" }
+    ],
+    formulas_list: [
+      { label: "Volume (V)", formula: (inputs) => 3.14 * inputs[0] * inputs[0] * inputs[1] },
+    ],
+  },
+  {
+    title: "Kerucut",
+    description: "Calculator untuk menghitung bangun geometri Kerucut",
+    inputs: [
+      { label: "Luas Alas", unit: "cm2" },
+      { label: "Tinggi", unit: "cm2" }
+    ],
+    formulas_list: [
+      { label: "Volume (V)", formula: (inputs) => 1/3 * 3.14 * inputs[0] * inputs[0] * inputs[1] },
+    ],
+  },
+  {
+    title: "Bola",
+    description: "Calculator untuk menghitung bangun geometri Bola",
+    inputs: [
+      { label: "Luas Alas", unit: "cm2" },
+    ],
+    formulas_list: [
+      { label: "Volume (V)", formula: (inputs) => 4/3 * 3.14 * inputs[0] * inputs[0] * inputs[0] },
+    ],
+  },
 ];
 
 window.onload = () => {
@@ -91,6 +160,4 @@ function calculate(index) {
     `
     answerContent.append(div)
   });
-  // const result = currentFormula.formula(inputs);
-  // document.getElementById('answer').textContent = `Result: ${result.toFixed(2)} ${currentFormula.inputs[0].unit}`
 };

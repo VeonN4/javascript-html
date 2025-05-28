@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="password-div">
+    <div class="password-header">
+      <h3 id="password-title">Password</h3>
+      <div id="password-value"></div>
+    </div>
+    <div class="options">
+      <div>
+        <label for="digits">Digits</label>
+        <input type="checkbox" name="digits" id="hasDigits"> 
+      </div>
+      <div>
+        <label for="digits">Uppercase</label>
+        <input type="checkbox" name="uppercase" id="hasUppercase">
+      </div>
+      <div>
+        <label for="digits">Lowercase</label>
+        <input type="checkbox" name="lowercase" id="hasLowercase">
+      </div>
+      <div>
+        <label for="digits">Punctuation</label>
+        <input type="checkbox" name="punctuation" id="hasPunctuation">
+      </div>
+    </div>
+
+    <div>
+      <label for="length">Length</label>
+      <input type="number" name="length" value="16" id="passwordLength" minlength="1">
+    </div>
+
+    <button id="generate">Create Password</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

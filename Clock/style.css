@@ -1,0 +1,19 @@
+:root {
+  font-family: sans-serif;
+}
+
+.box {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.clock {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: #646464;
+  border-radius: 10px;
+  border: 1px solid #000;
+  color: white;
+  width: 100px;
+}

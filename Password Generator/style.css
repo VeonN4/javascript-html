@@ -1,0 +1,31 @@
+:root {
+  font-family: sans-serif;
+}
+
+h3 {
+  margin: 10px 0px;
+}
+
+.password-div {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 500px;
+}
+
+.password-header {
+  margin: 10px 0px;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1o 50px;
+}
+
+#password-value {
+  display: inline-block;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 10px;
+  height: 15px;
+}

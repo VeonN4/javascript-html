@@ -1,10 +1,14 @@
 /* Intialization */
 
+* {
+  margin: 0;
+}
+
 :root {
   font-family: sans-serif;
 }
 
-h1 {
+h3 {
   margin: 0;
 }
 
@@ -23,10 +27,10 @@ h1 {
 }
 
 #modal-content {
-  background-color: red;
+  background-color: rgb(230, 230, 230);
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid #7a7a7a;
   width: 80%;
 }
 
@@ -41,5 +45,30 @@ h1 {
 
 
 .card-content {
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 1px solid #7a7a7a;
+  margin: 10px;
+  padding: 10px;
+  background-color: rgb(230, 230, 230);
+}
+
+.card-content p {
+  margin: 8px 0px;
+}
+
+.card-content button {
+  padding: 8px;
+  background: #0952f0;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 0px none;
+  color: white;
+  transition: background-color 0.5s;
+}
+
+.card-content button:hover {
+  background-color: #3772f1;
+  transition: background-color 0.5s;
 }
