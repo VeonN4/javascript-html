@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 400px;
+    }
+    input, select, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Temperature Converter (F ↔ C)</h2>
+
+  <input type="number" id="tempInput" placeholder="Enter temperature">
+  <select id="conversionType">
+    <option value="toCelsius">Fahrenheit → Celsius</option>
+    <option value="toFahrenheit">Celsius → Fahrenheit</option>
+  </select>
+  <button onclick="convertTemp()">Convert</button>
+
+  <div id="result"></div>
+
+  <script>
+    function convertTemp() {
+      const temp = parseFloat(document.getElementById("tempInput").value);
+      const type = document.getElementById("conversionType").value;
+      const result = document.getElementById("result");
+
+      if (isNaN(temp)) {
+        result.textContent = "Please enter a valid number.";
+        result.style.color = "red";
+        return;
+      }
+
+      if (type === "toCelsius") {
+        const celsius = ((temp - 32) * 5 / 9).toFixed(2);
+        result.textContent = `${temp}°F = ${celsius}°C`;
+      } else {
+        const fahrenheit = ((temp * 9 / 5) + 32).toFixed(2);
+        result.textContent = `${temp}°C = ${fahrenheit}°F`;
+      }
+
+      result.style.color = "black";
+    }
+  </script>
+
+</body>
+</html>

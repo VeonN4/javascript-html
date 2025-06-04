@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Generator</title>
+</head>
+<body>
+  <input type="number" name="count" id="count" min="1" value="9">
+  <button id="countBtn">Generate</button>
+
+  <div id="output">&nbsp;</div>
+
+  <script>
+    const countBtn = document.getElementById("countBtn");
+
+    countBtn.addEventListener("click", generate);
+
+    function generate() {
+      const countInput = parseInt(document.getElementById("count").value);
+      const output = document.getElementById("output");
+      const symbol = "*";
+      const space = "\xa0\xa0";
+      let result = "";
+      
+      const mid = Math.floor((countInput) / 2);
+
+      for (let i = 1; i <= countInput; i++) {
+        let stars;
+        if (i <= mid) {
+          stars = (countInput - mid) - i + 1;
+        } else {
+          stars = i - mid
+        }
+        result += space.repeat(countInput - stars) + symbol.repeat((stars * 2) - 1) + "\n";
+      }
+
+      output.innerText = result;
+    }
+  </script>
+</body>
+</html>

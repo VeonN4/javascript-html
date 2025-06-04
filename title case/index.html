@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title Case Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      margin-top: 10px;
+    }
+    #output {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Convert to Title Case</h2>
+  <input type="text" id="inputText" placeholder="Enter a sentence">
+  <button onclick="toTitleCase()">Convert</button>
+
+  <div id="output"></div>
+
+  <script>
+    function toTitleCase() {
+      const input = document.getElementById("inputText").value;
+      const output = document.getElementById("output");
+
+      const titleCased = input
+        .toLowerCase()
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+
+      output.textContent = `Title Case: ${titleCased}`;
+    }
+  </script>
+
+</body>
+</html>

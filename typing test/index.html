@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Speed Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      max-width: 600px;
+    }
+    #sentence {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    #inputArea {
+      width: 100%;
+      height: 80px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Typing Speed Test</h2>
+  <div id="sentence">Click "Start" to begin...</div>
+
+  <textarea id="inputArea" disabled placeholder="Start the test to type here..."></textarea><br><br>
+  <button onclick="startTest()">Start</button>
+  <button onclick="checkSpeed()">Done</button>
+
+  <div id="result"></div>
+
+  <script>
+    const testSentences = [
+      "The quick brown fox jumps over the lazy dog.",
+      "Typing is a useful skill for everyone.",
+      "Practice makes perfect when learning to type fast.",
+      "JavaScript can make web pages interactive.",
+      "Keep your eyes on the screen, not on your keyboard."
+    ];
+
+    let startTime = 0;
+    let currentSentence = "";
+
+    function startTest() {
+      const index = Math.floor(Math.random() * testSentences.length);
+      currentSentence = testSentences[index];
+      document.getElementById("sentence").innerText = currentSentence;
+      document.getElementById("inputArea").value = "";
+      document.getElementById("inputArea").disabled = false;
+      document.getElementById("inputArea").focus();
+      document.getElementById("result").innerText = "";
+      startTime = new Date().getTime();
+    }
+
+    function checkSpeed() {
+      const typedText = document.getElementById("inputArea").value.trim();
+      const endTime = new Date().getTime();
+      const timeTaken = (endTime - startTime) / 1000 / 60; // in minutes
+
+      if (!startTime || typedText.length === 0) {
+        document.getElementById("result").innerText = "Start the test and type the sentence.";
+        return;
+      }
+
+      const wordCount = typedText.split(/\s+/).length;
+      const wpm = Math.round(wordCount / timeTaken);
+
+      let accuracy = 0;
+      const originalWords = currentSentence.trim().split(/\s+/);
+      const typedWords = typedText.split(/\s+/);
+      let correctWords = 0;
+
+      for (let i = 0; i < typedWords.length; i++) {
+        if (typedWords[i] === originalWords[i]) {
+          correctWords++;
+        }
+      }
+
+      accuracy = Math.round((correctWords / originalWords.length) * 100);
+
+      document.getElementById("result").innerText = `Speed: ${wpm} WPM\nAccuracy: ${accuracy}%`;
+      document.getElementById("inputArea").disabled = true;
+    }
+  </script>
+
+</body>
+</html>

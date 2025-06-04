@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Validator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Email Format Validator</h2>
+  <input type="text" id="email" placeholder="Enter your email">
+  <button onclick="validateEmail()">Validate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function validateEmail() {
+      const email = document.getElementById("email").value;
+      const result = document.getElementById("result");
+
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (regex.test(email)) {
+        result.textContent = "Valid email format ✅";
+        result.style.color = "green";
+      } else {
+        result.textContent = "Invalid email format ❌";
+        result.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

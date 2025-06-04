@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show/Hide Text</title>
+  <style>
+    #hiddenText {
+      display: none;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="toggleText()">Show Text</button>
+
+  <div id="hiddenText">
+    Wi Wok De Tok Not Onle Tok De Tok
+  </div>
+
+  <script>
+    function toggleText() {
+      const text = document.getElementById("hiddenText");
+      const button = document.querySelector("button");
+
+      if (text.style.display === "none") {
+        text.style.display = "block";
+        button.textContent = "Hide Text";
+      } else {
+        text.style.display = "none";
+        button.textContent = "Show Text";
+      }
+    }
+  </script>
+
+</body>
+</html>

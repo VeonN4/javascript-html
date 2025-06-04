@@ -1,0 +1,15 @@
+:root {
+  font-family: sans-serif;
+}
+
+.timer-div {
+  display: flex;
+  width: 100px;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+}
+
+h1 {
+  padding: 0px 10px;
+}

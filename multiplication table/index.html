@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplication Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 14px;
+    }
+    #table {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Multiplication Table Generator</h2>
+  <label for="numberInput">Masukan angka:</label>
+  <input type="number" id="numberInput" />
+  <button onclick="generateTable()">Generate</button>
+
+  <div id="table"></div>
+
+  <script>
+    function generateTable() {
+      const num = parseInt(document.getElementById("numberInput").value);
+      const output = document.getElementById("table");
+      output.innerHTML = "";
+
+      if (isNaN(num)) {
+        output.innerHTML = "<p>Tolong masukan angka yang valid.</p>";
+        return;
+      }
+
+      let tableHTML = `<h3>Tabel perkalian ${num}</h3>`;
+      for (let i = 1; i <= 10; i++) {
+        tableHTML += `<p>${num} × ${i} = ${num * i}</p>`;
+      }
+
+      output.innerHTML = tableHTML;
+    }
+  </script>
+
+</body>
+</html>

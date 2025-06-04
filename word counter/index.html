@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label for="textInput">Masukan Text:</label>
+  <input type="text" name="textInput" id="textInput">
+
+  <button type="button" id="countWords">Count Words</button>
+
+  <p id="word-counter"></p>
+  <script>
+    const wordCounter = document.getElementById("word-counter")
+    const countWordsBtn = document.getElementById("countWords")
+
+    function countWords() {
+      const textInput = document.getElementById("textInput").value
+
+      wordCounter.innerText = "Terdapat " + textInput.split(" ").length + " kata"
+    }
+
+    countWordsBtn.addEventListener("click", countWords)
+  </script>
+</body>
+</html>

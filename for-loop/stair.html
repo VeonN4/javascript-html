@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="number" name="count" id="count" min="1" value="10">
+  <button id="countBtn">Generate</button>
+
+  <div id="output"></div>
+
+  <script>
+    const countBtn = document.getElementById("countBtn")
+
+    countBtn.addEventListener("click", generate)
+    
+    function generate() {
+      const countInput = document.getElementById("count").value
+      const output = document.getElementById("output")
+      const symbol = "*"
+      
+      output.innerText = ""
+      
+      for (let index = 0; index < countInput; index++) {
+        output.innerHTML += `${symbol.repeat(index+1)}<br>`
+      }
+    }
+
+
+
+  </script>
+</body>
+</html>

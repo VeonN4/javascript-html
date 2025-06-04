@@ -12,16 +12,9 @@ function checkScore() {
 
 
   const totalScore = scienceScore + mathScore + geographyScore + historyScore + indonesiaScore + englishScore
-  console.log(totalScore/6 < 90);
-
-  if (totalScore/6 < 90) {
-    gradeEl.innerText = "A"
-    console.log("something")
-  } if (totalScore/6 < 80) {
-    gradeEl.innerText = "B"
-  }
 
   totalScoreEl.innerText = totalScore
+  gradeEl.innerText = (totalScore/6) > 100 ? "A" : (totalScore/6) > 80 ? "B" : (totalScore/6) > 60 ? "C" : (totalScore/6) > 30 ? "D" : (totalScore/6) > 20 ? "E" : "F"
 }
 
 checkScoreBtn.addEventListener("click", checkScore)
