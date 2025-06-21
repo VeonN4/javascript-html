@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>12-Hour Time Format</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #clock {
+      font-size: 36px;
+      font-weight: bold;
+      color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🕒 Current Time (12-Hour Format)</h2>
+  <div id="clock">--:--:-- --</div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 0 becomes 12
+
+      const paddedMinutes = minutes.toString().padStart(2, '0');
+      const paddedSeconds = seconds.toString().padStart(2, '0');
+
+      const timeString = `${hours}:${paddedMinutes}:${paddedSeconds} ${ampm}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // initial call
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Number Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 40px auto;
+      text-align: center;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎯 Guess the Number (1–100)</h2>
+
+  <input type="number" id="guessInput" placeholder="Enter your guess" min="1" max="100">
+  <button onclick="checkGuess()">Guess</button>
+  <button onclick="resetGame()">Restart</button>
+
+  <div id="message"></div>
+
+  <script>
+    let secretNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+      const guess = parseInt(document.getElementById("guessInput").value);
+      const message = document.getElementById("message");
+      attempts++;
+
+      if (isNaN(guess) || guess < 1 || guess > 100) {
+        message.textContent = "❗ Please enter a number between 1 and 100.";
+        message.style.color = "red";
+        return;
+      }
+
+      if (guess === secretNumber) {
+        message.textContent = `🎉 Correct! The number was ${secretNumber}. Attempts: ${attempts}`;
+        message.style.color = "green";
+      } else if (guess < secretNumber) {
+        message.textContent = "📉 Too low! Try again.";
+        message.style.color = "blue";
+      } else {
+        message.textContent = "📈 Too high! Try again.";
+        message.style.color = "orange";
+      }
+    }
+
+    function resetGame() {
+      secretNumber = Math.floor(Math.random() * 100) + 1;
+      attempts = 0;
+      document.getElementById("guessInput").value = "";
+      document.getElementById("message").textContent = "";
+    }
+  </script>
+
+</body>
+</html>

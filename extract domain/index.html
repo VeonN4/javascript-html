@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Extract Domain</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 400px;
+    }
+    input, button {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #output {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Extract Domain from URL</h2>
+
+  <input type="text" id="urlInput" placeholder="Enter a URL (e.g. https://www.example.com/page)">
+  <button onclick="extractDomain()">Extract</button>
+
+  <div id="output"></div>
+
+  <script>
+    function extractDomain() {
+      const urlInput = document.getElementById("urlInput").value;
+      const output = document.getElementById("output");
+
+      try {
+        const url = new URL(urlInput.startsWith("http") ? urlInput : `https://${urlInput}`);
+        output.textContent = `Domain: ${url.hostname}`;
+        output.style.color = "black";
+      } catch (error) {
+        output.textContent = "Invalid URL!";
+        output.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Name to Background</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      transition: background-color 0.5s;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+      margin-top: 10px;
+    }
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎨 Set Background Color</h2>
+  <input type="text" id="colorInput" placeholder="Enter color name (e.g. blue)">
+  <button onclick="changeBackground()">Apply</button>
+
+  <div id="message"></div>
+
+  <script>
+    function changeBackground() {
+      const color = document.getElementById("colorInput").value.trim().toLowerCase();
+      const message = document.getElementById("message");
+
+      // Create a temporary element to test if color is valid
+      const temp = document.createElement("div");
+      temp.style.color = color;
+
+      if (temp.style.color === "") {
+        message.textContent = `❌ Invalid color: "${color}"`;
+        message.style.color = "red";
+      } else {
+        document.body.style.backgroundColor = color;
+        message.textContent = `✅ Background set to "${color}"`;
+        message.style.color = "green";
+      }
+    }
+  </script>
+
+</body>
+</html>

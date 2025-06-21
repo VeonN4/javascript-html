@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Remove Duplicates</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🧹 Remove Duplicates from Array</h2>
+
+  <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas (e.g. 1, 2, 2, 3)">
+  <button onclick="removeDuplicates()">Remove Duplicates</button>
+
+  <div id="result"></div>
+
+  <script>
+    function removeDuplicates() {
+      const input = document.getElementById("arrayInput").value;
+      const array = input.split(',').map(num => parseFloat(num.trim()));
+      const result = document.getElementById("result");
+
+      if (array.some(isNaN)) {
+        result.textContent = "❗ Please enter only valid numbers.";
+        result.style.color = "red";
+        return;
+      }
+
+      const uniqueArray = [...new Set(array)];
+      result.textContent = `✅ Unique values: [ ${uniqueArray.join(', ')} ]`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

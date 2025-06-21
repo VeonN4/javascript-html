@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fibonacci Series</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      padding: 20px;
+      margin: auto;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    #result {
+      margin-top: 20px;
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 4px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Fibonacci Series Generator</h2>
+  <input type="number" id="terms" placeholder="Enter number of terms" min="1">
+  <button onclick="generateFibonacci()">Generate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function generateFibonacci() {
+      const n = parseInt(document.getElementById("terms").value);
+      const resultDiv = document.getElementById("result");
+
+      if (isNaN(n) || n <= 0) {
+        resultDiv.textContent = "Please enter a positive number.";
+        return;
+      }
+
+      let fibSeries = [];
+      let a = 0, b = 1;
+
+      for (let i = 0; i < n; i++) {
+        fibSeries.push(a);
+        [a, b] = [b, a + b];  // Destructuring for swapping
+      }
+
+      resultDiv.textContent = `Fibonacci series (${n} terms):\n${fibSeries.join(', ')}`;
+    }
+  </script>
+
+</body>
+</html>

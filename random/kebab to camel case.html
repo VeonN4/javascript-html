@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kebab to Camel Case</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 450px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔤 Kebab-case ➜ camelCase</h2>
+
+  <input type="text" id="kebabInput" placeholder="e.g. my-variable-name">
+  <button onclick="convertToCamel()">Convert</button>
+
+  <div id="result"></div>
+
+  <script>
+    function convertToCamel() {
+      const input = document.getElementById("kebabInput").value.trim();
+      const result = document.getElementById("result");
+
+      if (!input || !input.includes('-')) {
+        result.textContent = "❗ Please enter a valid kebab-case string.";
+        result.style.color = "red";
+        return;
+      }
+
+      const camelCase = input
+        .toLowerCase()
+        .split('-')
+        .map((word, index) => index === 0 ? word : word[0].toUpperCase() + word.slice(1))
+        .join('');
+
+      result.textContent = `✅ camelCase: ${camelCase}`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

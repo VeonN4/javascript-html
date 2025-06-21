@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Merge and Sort Arrays</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔀 Merge & Sort Arrays</h2>
+
+  <input type="text" id="array1" placeholder="Enter first array (e.g. 1, 3, 5)">
+  <input type="text" id="array2" placeholder="Enter second array (e.g. 2, 4, 6)">
+  <button onclick="mergeAndSort()">Merge & Sort</button>
+
+  <div id="result"></div>
+
+  <script>
+    function mergeAndSort() {
+      const arr1 = document.getElementById("array1").value.split(',').map(n => parseFloat(n.trim()));
+      const arr2 = document.getElementById("array2").value.split(',').map(n => parseFloat(n.trim()));
+      const result = document.getElementById("result");
+
+      if ([...arr1, ...arr2].some(isNaN)) {
+        result.textContent = "❗ Please enter only valid numbers.";
+        result.style.color = "red";
+        return;
+      }
+
+      const merged = arr1.concat(arr2);
+      const sorted = merged.sort((a, b) => a - b);
+
+      result.textContent = `✅ Merged & Sorted: [ ${sorted.join(', ')} ]`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enable/Disable Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 400px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    button:disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Enable/Disable Button Example</h2>
+
+  <input type="text" id="textInput" placeholder="Type something...">
+  <button id="submitBtn" disabled>Submit</button>
+
+  <script>
+    const textInput = document.getElementById("textInput");
+    const submitBtn = document.getElementById("submitBtn");
+
+    textInput.addEventListener("input", () => {
+      submitBtn.disabled = textInput.value.trim() === "";
+    });
+  </script>
+
+</body>
+</html>

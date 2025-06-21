@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Max and Min Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔢 Find Max & Min in Array</h2>
+
+  <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas (e.g. 5, 1, 9)">
+  <button onclick="findMaxMin()">Find Max & Min</button>
+
+  <div id="result"></div>
+
+  <script>
+    function findMaxMin() {
+      const input = document.getElementById("arrayInput").value;
+      const arr = input.split(',').map(n => parseFloat(n.trim()));
+      const result = document.getElementById("result");
+
+      if (arr.length === 0 || arr.some(isNaN)) {
+        result.textContent = "❗ Please enter valid numbers separated by commas.";
+        result.style.color = "red";
+        return;
+      }
+
+      const max = Math.max(...arr);
+      const min = Math.min(...arr);
+
+      result.textContent = `✅ Max: ${max}, Min: ${min}`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>

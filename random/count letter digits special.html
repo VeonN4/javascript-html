@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Character Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f4f4f4;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Count Letters, Digits, and Special Characters</h2>
+
+  <textarea id="inputText" rows="4" placeholder="Enter your text here..."></textarea>
+  <button onclick="countCharacters()">Count</button>
+
+  <div id="result"></div>
+
+  <script>
+    function countCharacters() {
+      const text = document.getElementById("inputText").value;
+      let letters = 0, digits = 0, specialChars = 0;
+
+      for (let char of text) {
+        if (/[a-zA-Z]/.test(char)) {
+          letters++;
+        } else if (/[0-9]/.test(char)) {
+          digits++;
+        } else if (char.trim() !== "") {  // ignore spaces
+          specialChars++;
+        }
+      }
+
+      const result = `
+        Letters: ${letters}
+        Digits: ${digits}
+        Special Characters: ${specialChars}
+      `;
+
+      document.getElementById("result").textContent = result;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weekday Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 400px;
+      margin: 50px auto;
+    }
+    input, button {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📆 Find Weekday Name</h2>
+
+  <input type="date" id="dateInput">
+  <button onclick="getWeekday()">Show Weekday</button>
+
+  <div id="result"></div>
+
+  <script>
+    function getWeekday() {
+      const input = document.getElementById("dateInput").value;
+      const result = document.getElementById("result");
+
+      if (!input) {
+        result.textContent = "❗ Please select a date.";
+        result.style.color = "red";
+        return;
+      }
+
+      const date = new Date(input);
+      const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const weekdayName = weekdays[date.getDay()];
+
+      result.textContent = `✅ The day is: ${weekdayName}`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

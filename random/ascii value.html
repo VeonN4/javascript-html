@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASCII Value Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔡 ASCII Value Finder</h2>
+
+  <input type="text" id="charInput" placeholder="Enter a single character" maxlength="1">
+  <button onclick="getAsciiValue()">Get ASCII</button>
+
+  <div id="result"></div>
+
+  <script>
+    function getAsciiValue() {
+      const char = document.getElementById("charInput").value;
+      const result = document.getElementById("result");
+
+      if (char.length !== 1) {
+        result.textContent = "❗ Please enter exactly one character.";
+        result.style.color = "red";
+        return;
+      }
+
+      const ascii = char.charCodeAt(0);
+      result.textContent = `✅ ASCII value of '${char}' is ${ascii}`;
+      result.style.color = "darkgreen";
+    }
+  </script>
+
+</body>
+</html>

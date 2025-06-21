@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reverse Number</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔁 Reverse a Number</h2>
+
+  <input type="number" id="numberInput" placeholder="Enter a number">
+  <button onclick="reverseNumber()">Reverse</button>
+
+  <div id="result"></div>
+
+  <script>
+    function reverseNumber() {
+      const input = document.getElementById("numberInput").value;
+      const result = document.getElementById("result");
+
+      if (input === "") {
+        result.textContent = "❗ Please enter a number.";
+        result.style.color = "red";
+        return;
+      }
+
+      const isNegative = input < 0;
+      const reversed = Math.abs(input).toString().split('').reverse().join('');
+      result.textContent = `✅ Reversed number: ${isNegative ? '-' : ''}${reversed}`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

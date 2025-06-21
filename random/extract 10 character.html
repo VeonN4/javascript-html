@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Extract First 10 Characters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 400px;
+      margin: 50px auto;
+    }
+    input, button {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔡 First 10 Characters Extractor</h2>
+
+  <input type="text" id="textInput" placeholder="Enter a string">
+  <button onclick="extractFirst10()">Extract</button>
+
+  <div id="result"></div>
+
+  <script>
+    function extractFirst10() {
+      const input = document.getElementById("textInput").value;
+      const first10 = input.slice(0, 10); // safely handles shorter strings too
+      document.getElementById("result").textContent = `✂️ First 10 characters: "${first10}"`;
+    }
+  </script>
+
+</body>
+</html>

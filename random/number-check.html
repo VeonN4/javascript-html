@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 400px;
+      margin: 50px auto;
+    }
+    input, button {
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔢 Check Number Category</h2>
+
+  <input type="number" id="numberInput" placeholder="Enter an integer">
+  <button onclick="checkNumber()">Check</button>
+
+  <div id="result"></div>
+
+  <script>
+    function checkNumber() {
+      const num = parseInt(document.getElementById("numberInput").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(num)) {
+        result.textContent = "❗ Please enter a valid number.";
+        result.style.color = "red";
+        return;
+      }
+
+      if (num < 10) {
+        result.textContent = "✅ Satuan.";
+        result.style.color = "green";
+      } else if (num < 100) {
+        result.textContent = "✅ Puluhan.";
+        result.style.color = "green";
+      } else if (num < 1000) {
+        result.textContent = "✅ Ratusan.";
+        result.style.color = "green";
+      } else if (num < 1000000) {
+        result.textContent = "✅ Ribuan.";
+        result.style.color = "blue";
+      } else if (num < 1000000000) {
+        result.textContent = "✅ Jutaan.";
+        result.style.color = "purple";
+      } else {
+        result.textContent = "ℹ️ Nomor tersebut tidak masuk dalam kategori.";
+        result.style.color = "gray";
+      }
+    }
+  </script>
+
+
+</body>
+</html>

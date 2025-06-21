@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Union of Arrays</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔗 Union of Two Arrays</h2>
+
+  <input type="text" id="array1" placeholder="Enter first array (e.g. 1, 2, 3)">
+  <input type="text" id="array2" placeholder="Enter second array (e.g. 3, 4, 5)">
+  <button onclick="findUnion()">Find Union</button>
+
+  <div id="result"></div>
+
+  <script>
+    function findUnion() {
+      const arr1 = document.getElementById("array1").value.split(',').map(x => x.trim());
+      const arr2 = document.getElementById("array2").value.split(',').map(x => x.trim());
+
+      if (!arr1.length || !arr2.length) {
+        document.getElementById("result").textContent = "❗ Please enter both arrays.";
+        document.getElementById("result").style.color = "red";
+        return;
+      }
+
+      const unionSet = new Set([...arr1, ...arr2]);
+      const resultArray = Array.from(unionSet);
+
+      document.getElementById("result").textContent = `✅ Union: [ ${resultArray.join(', ')} ]`;
+      document.getElementById("result").style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modal Popup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    /* Modal container */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5); /* Dim background */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Modal content */
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .close-btn {
+      background-color: #ff4d4d;
+      border: none;
+      padding: 8px 12px;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    .open-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Modal Popup Demo</h2>
+  <button class="open-btn" onclick="openModal()">Open Modal</button>
+
+  <!-- Modal structure -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <h2>Hello!</h2>
+      <p>This is a modal popup window.</p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+
+    function openModal() {
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.addEventListener("click", function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>

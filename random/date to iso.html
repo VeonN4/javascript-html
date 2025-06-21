@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date to ISO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🕓 Convert Date to ISO String</h2>
+
+  <input type="date" id="dateInput">
+  <button onclick="convertToISO()">Convert</button>
+
+  <div id="result"></div>
+
+  <script>
+    function convertToISO() {
+      const input = document.getElementById("dateInput").value;
+      const result = document.getElementById("result");
+
+      if (!input) {
+        result.textContent = "❗ Please select a date.";
+        result.style.color = "red";
+        return;
+      }
+
+      const isoString = new Date(input).toISOString();
+      result.textContent = `✅ ISO String: ${isoString}`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

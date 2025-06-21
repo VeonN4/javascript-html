@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Copy to Clipboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 400px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    #message {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Copy Text to Clipboard</h2>
+  <input type="text" id="copyText" value="This is the text to copy">
+  <button onclick="copyToClipboard()">Copy</button>
+
+  <div id="message"></div>
+
+  <script>
+    function copyToClipboard() {
+      const text = document.getElementById("copyText");
+      text.select();
+      text.setSelectionRange(0, 99999); // For mobile devices
+
+      navigator.clipboard.writeText(text.value)
+        .then(() => {
+          document.getElementById("message").textContent = "Copied to clipboard ✅";
+          document.getElementById("message").style.color = "green";
+        })
+        .catch(err => {
+          document.getElementById("message").textContent = "Failed to copy ❌";
+          document.getElementById("message").style.color = "red";
+        });
+    }
+  </script>
+
+</body>
+</html>

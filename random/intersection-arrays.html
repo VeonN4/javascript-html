@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Intersection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔍 Intersection of Two Arrays</h2>
+
+  <input type="text" id="array1" placeholder="Enter first array (e.g. 1, 2, 3)">
+  <input type="text" id="array2" placeholder="Enter second array (e.g. 2, 3, 4)">
+  <button onclick="findIntersection()">Find Intersection</button>
+
+  <div id="result"></div>
+
+  <script>
+    function findIntersection() {
+      const input1 = document.getElementById("array1").value;
+      const input2 = document.getElementById("array2").value;
+
+      const arr1 = input1.split(',').map(x => x.trim());
+      const arr2 = input2.split(',').map(x => x.trim());
+
+      // Remove duplicates and find intersection
+      const set1 = new Set(arr1);
+      const set2 = new Set(arr2);
+
+      const intersection = [...set1].filter(item => set2.has(item));
+
+      document.getElementById("result").textContent =
+        intersection.length > 0
+          ? `✅ Intersection: [ ${intersection.join(', ')} ]`
+          : "❌ No common elements found.";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Sum Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Sum of Array Elements</h2>
+  <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas (e.g., 1,2,3)">
+  <button onclick="calculateSum()">Calculate Sum</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateSum() {
+      const input = document.getElementById("arrayInput").value;
+      const result = document.getElementById("result");
+
+      // Convert input string to array of numbers
+      const numArray = input
+        .split(',')
+        .map(num => parseFloat(num.trim()))
+        .filter(num => !isNaN(num));
+
+      if (numArray.length === 0) {
+        result.textContent = "Please enter valid numbers.";
+        result.style.color = "red";
+        return;
+      }
+
+      const sum = numArray.reduce((acc, curr) => acc + curr, 0);
+      result.textContent = `Sum: ${sum}`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

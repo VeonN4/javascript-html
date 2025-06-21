@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Replace Word</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    textarea, input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    #result {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Replace All Instances of a Word</h2>
+
+  <textarea id="textInput" rows="6" placeholder="Enter your text here..."></textarea>
+  <input type="text" id="targetWord" placeholder="Word to replace">
+  <input type="text" id="replacementWord" placeholder="Replacement word">
+  <button onclick="replaceWords()">Replace</button>
+
+  <div id="result"></div>
+
+  <script>
+    function replaceWords() {
+      const text = document.getElementById("textInput").value;
+      const target = document.getElementById("targetWord").value;
+      const replacement = document.getElementById("replacementWord").value;
+      const result = document.getElementById("result");
+
+      if (!target) {
+        result.textContent = "Please enter the word to replace.";
+        result.style.color = "red";
+        return;
+      }
+
+      // Create global, case-sensitive regex
+      const regex = new RegExp(target, 'g');
+      const replacedText = text.replace(regex, replacement);
+      result.textContent = replacedText;
+      result.style.color = "black";
+    }
+  </script>
+
+</body>
+</html>

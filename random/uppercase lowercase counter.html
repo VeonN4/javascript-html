@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Case Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 500px;
+      margin: 50px auto;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: navy;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔠 Count Uppercase & Lowercase Letters</h2>
+
+  <input type="text" id="textInput" placeholder="Enter text">
+  <button onclick="countCase()">Count</button>
+
+  <div id="result"></div>
+
+  <script>
+    function countCase() {
+      const input = document.getElementById("textInput").value;
+      let upperCount = 0;
+      let lowerCount = 0;
+
+      for (let char of input) {
+        if (char >= 'A' && char <= 'Z') {
+          upperCount++;
+        } else if (char >= 'a' && char <= 'z') {
+          lowerCount++;
+        }
+      }
+
+      const result = document.getElementById("result");
+      result.textContent = `🔠 Uppercase: ${upperCount}, 🔡 Lowercase: ${lowerCount}`;
+    }
+  </script>
+
+</body>
+</html>

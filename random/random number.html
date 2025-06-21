@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Number Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 400px;
+      margin: 50px auto;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎲 Random Number Generator</h2>
+  <button onclick="generateRandom()">Generate</button>
+  <div id="result"></div>
+
+  <script>
+    function generateRandom() {
+      const randomNumber = Math.floor(Math.random() * 100) + 1; // 1 to 100
+      document.getElementById("result").textContent = `🎯 Your number is: ${randomNumber}`;
+    }
+  </script>
+
+</body>
+</html>

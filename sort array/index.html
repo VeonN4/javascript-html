@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sort Array Ascending/Descending</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 32px 0 16px 32px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 24px 0 0 0;
+    }
+    textarea {
+      width: 100%;
+      min-height: 60px;
+      font-size: 1em;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+      margin-bottom: 16px;
+      background: #fff;
+      box-sizing: border-box;
+      transition: border 0.2s;
+    }
+    textarea:focus {
+      border: 1.5px solid #aaa;
+      outline: none;
+    }
+    select, button {
+      font-size: 1em;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #f8f8f8;
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s;
+      margin-bottom: 16px;
+    }
+    select:hover, button:hover {
+      background: #f0f0f0;
+      border-color: #bbb;
+    }
+    button {
+      width: 100%;
+      font-weight: 500;
+    }
+    .results-box {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-top: 12px;
+      background: #fff;
+      padding: 0;
+    }
+    .results-header {
+      padding: 12px 16px 6px 16px;
+      font-weight: bold;
+      color: #444;
+      font-size: 1.05em;
+    }
+    .results-summary {
+      padding: 0 16px 12px 16px;
+      color: #444;
+      font-size: 1em;
+    }
+    .results-valid {
+      background: #e7f8eb;
+      color: #258a41;
+      padding: 12px 16px;
+      border-radius: 0 0 6px 6px;
+      font-size: 1.06em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid #d3e6d6;
+      word-break: break-word;
+    }
+    .results-invalid {
+      background: #fdeaea;
+      color: #d03a3a;
+      padding: 12px 16px;
+      border-radius: 0 0 6px 6px;
+      font-size: 1.06em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid #f7dada;
+    }
+    .icon {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    @media (max-width: 650px) {
+      .container {
+        max-width: 98vw;
+        padding: 0 1vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sort Array Ascending/Descending</h1>
+    <textarea id="arrayInput" placeholder="Enter numbers separated by commas, e.g. 5, 2, 8, 1"></textarea>
+    <select id="sortOrder" aria-label="Sort order">
+      <option value="asc" selected>Sort Ascending</option>
+      <option value="desc">Sort Descending</option>
+    </select>
+    <button onclick="sortArray()">Sort Array</button>
+    <button onclick="clearAll()">Clear All</button>
+    <div id="results" class="results-box" style="display:none;">
+      <div class="results-header">Validation Results:</div>
+      <div class="results-summary" id="summary"></div>
+      <div id="resultDetails"></div>
+    </div>
+  </div>
+  <script>
+    function sortArray() {
+      const input = document.getElementById('arrayInput').value.trim();
+      const order = document.getElementById('sortOrder').value;
+      const resultsBox = document.getElementById('results');
+      const summary = document.getElementById('summary');
+      const resultDetails = document.getElementById('resultDetails');
+      resultsBox.style.display = 'block';
+
+      if (!input) {
+        summary.textContent = 'Summary: 0 valid, 1 invalid out of 1 total';
+        resultDetails.innerHTML = `<div class="results-invalid"><span class="icon">&#10060;</span> INVALID - No input provided</div>`;
+        return;
+      }
+
+      // Parse input
+      const arr = input.split(',')
+        .map(x => x.trim())
+        .filter(x => x !== '')
+        .map(Number);
+
+      const invalids = arr.filter(x => isNaN(x));
+      if (arr.length === 0 || invalids.length > 0) {
+        summary.textContent = 'Summary: 0 valid, 1 invalid out of 1 total';
+        resultDetails.innerHTML = `<div class="results-invalid"><span class="icon">&#10060;</span> INVALID - Please enter only numbers separated by commas</div>`;
+        return;
+      }
+
+      // Sort array
+      if (order === 'asc') {
+        arr.sort((a, b) => a - b);
+      } else {
+        arr.sort((a, b) => b - a);
+      }
+
+      summary.textContent = `Summary: 1 valid, 0 invalid out of 1 total`;
+      resultDetails.innerHTML = `
+        <div class="results-valid">
+          <span class="icon">&#10003;</span>
+          <span>VALID - Sorted Array (${order === 'asc' ? 'Ascending' : 'Descending'}): <b>[${arr.join(', ')}]</b></span>
+        </div>
+      `;
+    }
+
+    function clearAll() {
+      document.getElementById('arrayInput').value = '';
+      document.getElementById('sortOrder').value = 'asc';
+      document.getElementById('results').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

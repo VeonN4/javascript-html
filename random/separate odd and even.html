@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Even & Odd Separator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f4f4f4;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Separate Even and Odd Numbers</h2>
+  <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas (e.g., 1,2,3,4)">
+  <button onclick="separateEvenOdd()">Separate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function separateEvenOdd() {
+      const input = document.getElementById("arrayInput").value;
+      const result = document.getElementById("result");
+
+      // Convert input string to array of numbers
+      const numArray = input
+        .split(',')
+        .map(num => parseInt(num.trim()))
+        .filter(num => !isNaN(num));
+
+      if (numArray.length === 0) {
+        result.textContent = "Please enter valid numbers.";
+        result.style.color = "red";
+        return;
+      }
+
+      const even = numArray.filter(n => n % 2 === 0);
+      const odd = numArray.filter(n => n % 2 !== 0);
+
+      result.innerHTML = `
+        <strong>Even Numbers:</strong> ${even.join(', ')}<br>
+        <strong>Odd Numbers:</strong> ${odd.join(', ')}
+      `;
+    }
+  </script>
+
+</body>
+</html>

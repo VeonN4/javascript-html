@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tooltip Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .tooltip-text {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 6px 10px;
+      border-radius: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; /* Position above the element */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+    .tooltip-container:hover .tooltip-text,
+    .tooltip-container:focus-within .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tooltip Display</h2>
+
+  <div class="tooltip-container" tabindex="0">
+    Hover or focus me
+    <div class="tooltip-text">This is a tooltip message</div>
+  </div>
+
+</body>
+</html>

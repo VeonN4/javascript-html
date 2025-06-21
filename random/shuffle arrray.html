@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shuffle Array</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔀 Shuffle Array</h2>
+
+  <input type="text" id="arrayInput" placeholder="Enter items separated by commas (e.g. 1, 2, 3)">
+  <button onclick="shuffleArray()">Shuffle</button>
+
+  <div id="result"></div>
+
+  <script>
+    function shuffleArray() {
+      const input = document.getElementById("arrayInput").value;
+      let array = input.split(',').map(item => item.trim());
+      const result = document.getElementById("result");
+
+      // Fisher-Yates Shuffle
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+
+      result.textContent = `🎲 Shuffled Array: [ ${array.join(', ')} ]`;
+    }
+  </script>
+
+</body>
+</html>

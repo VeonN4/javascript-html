@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anagram Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: navy;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔄 Anagram Checker</h2>
+
+  <input type="text" id="string1" placeholder="Enter first string">
+  <input type="text" id="string2" placeholder="Enter second string">
+  <button onclick="checkAnagram()">Check</button>
+
+  <div id="result"></div>
+
+  <script>
+    function formatString(str) {
+      return str
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '') // remove non-alphanumeric characters
+        .split('')
+        .sort()
+        .join('');
+    }
+
+    function checkAnagram() {
+      const str1 = document.getElementById("string1").value;
+      const str2 = document.getElementById("string2").value;
+      const result = document.getElementById("result");
+
+      if (!str1 || !str2) {
+        result.textContent = "❗ Please enter both strings.";
+        result.style.color = "red";
+        return;
+      }
+
+      const isAnagram = formatString(str1) === formatString(str2);
+
+      result.textContent = isAnagram
+        ? `✅ "${str1}" and "${str2}" are anagrams!`
+        : `❌ "${str1}" and "${str2}" are NOT anagrams.`;
+      result.style.color = isAnagram ? "green" : "crimson";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Even Numbers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+    button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔢 Even Numbers from 1 to 20</h2>
+
+  <button onclick="printEvenNumbers()">Show Even Numbers</button>
+  <div id="output"></div>
+
+  <script>
+    function printEvenNumbers() {
+      let output = '';
+      for (let i = 1; i <= 20; i++) {
+        if (i % 2 === 0) {
+          output += i + ' ';
+        }
+      }
+      document.getElementById("output").textContent = output.trim();
+    }
+  </script>
+
+</body>
+</html>

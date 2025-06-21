@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Divisibility Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Check Divisibility by 5 and 11</h2>
+
+  <input type="number" id="numberInput" placeholder="Enter a number">
+  <button onclick="checkDivisibility()">Check</button>
+
+  <div id="result"></div>
+
+  <script>
+    function checkDivisibility() {
+      const num = parseInt(document.getElementById("numberInput").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(num)) {
+        result.textContent = "❗ Please enter a valid number.";
+        result.style.color = "red";
+        return;
+      }
+
+      if (num % 5 === 0 && num % 11 === 0) {
+        result.textContent = `✅ ${num} is divisible by both 5 and 11.`;
+        result.style.color = "green";
+      } else {
+        result.textContent = `❌ ${num} is not divisible by both 5 and 11.`;
+        result.style.color = "darkred";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Average of Array</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 500px;
+      margin: 50px auto;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>➗ Average Calculator</h2>
+
+  <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas (e.g. 10, 20, 30)">
+  <button onclick="calculateAverage()">Calculate Average</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateAverage() {
+      const input = document.getElementById("arrayInput").value;
+      const numbers = input.split(',').map(num => parseFloat(num.trim()));
+      const result = document.getElementById("result");
+
+      if (numbers.length === 0 || numbers.some(isNaN)) {
+        result.textContent = "❗ Please enter valid numbers separated by commas.";
+        result.style.color = "red";
+        return;
+      }
+
+      const sum = numbers.reduce((total, num) => total + num, 0);
+      const average = sum / numbers.length;
+
+      result.textContent = `✅ Average: ${average.toFixed(2)}`;
+      result.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

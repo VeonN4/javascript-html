@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Second Smallest Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 500px;
+      margin: 50px auto;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔍 Find Second Smallest Number</h2>
+
+  <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas">
+  <button onclick="findSecondSmallest()">Find</button>
+  <div id="result"></div>
+
+  <script>
+    function findSecondSmallest() {
+      const input = document.getElementById("arrayInput").value;
+      const result = document.getElementById("result");
+
+      const arr = input.split(',').map(num => parseFloat(num.trim()));
+
+      if (arr.length < 2 || arr.some(isNaN)) {
+        result.textContent = "❗ Please enter at least two valid numbers.";
+        result.style.color = "red";
+        return;
+      }
+
+      // Use Set to remove duplicates
+      const uniqueSorted = [...new Set(arr)].sort((a, b) => a - b);
+
+      if (uniqueSorted.length < 2) {
+        result.textContent = "❗ Not enough unique numbers to determine the second smallest.";
+        result.style.color = "orange";
+      } else {
+        result.textContent = `✅ The second smallest number is: ${uniqueSorted[1]}`;
+        result.style.color = "green";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert String</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Insert String at Specific Position</h2>
+
+  <input type="text" id="originalStr" placeholder="Original string">
+  <input type="text" id="insertStr" placeholder="String to insert">
+  <input type="number" id="position" placeholder="Insert position (index)" min="0">
+  <button onclick="insertString()">Insert</button>
+
+  <div id="result"></div>
+
+  <script>
+    function insertString() {
+      const original = document.getElementById("originalStr").value;
+      const insert = document.getElementById("insertStr").value;
+      let position = parseInt(document.getElementById("position").value);
+      const resultDiv = document.getElementById("result");
+
+      if (isNaN(position) || position < 0 || position > original.length) {
+        resultDiv.textContent = "⚠️ Invalid position.";
+        resultDiv.style.color = "red";
+        return;
+      }
+
+      const newString = original.slice(0, position) + insert + original.slice(position);
+      resultDiv.textContent = `Result: ${newString}`;
+      resultDiv.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>String Concatenation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔤 Concatenate Two Strings</h2>
+
+  <input type="text" id="string1" placeholder="Enter first string">
+  <input type="text" id="string2" placeholder="Enter second string">
+  <button onclick="concatenateStrings()">Concatenate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function concatenateStrings() {
+      const str1 = document.getElementById("string1").value;
+      const str2 = document.getElementById("string2").value;
+      const result = str1 + str2;
+
+      document.getElementById("result").textContent = `🧩 Result: ${result}`;
+    }
+  </script>
+
+</body>
+</html>
